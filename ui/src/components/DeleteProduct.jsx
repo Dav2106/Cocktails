@@ -17,7 +17,8 @@ function DeleteProduct({refreshProducts, show, toggleShow, product}){
             headers: { 'Content-Type': 'application/json' }
         };
         fetch('http://localhost:3001/api/delete/'+id, requestOptions)
-            .then(response => response.json())
+        .then(response => response.text())
+        .then(() => refreshProducts());
         clearTextFields();    
         toggleShow();
     }

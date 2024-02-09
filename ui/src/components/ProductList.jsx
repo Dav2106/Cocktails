@@ -14,19 +14,19 @@ function ProductList() {
   const toggleShowEditProduct = () => setShowEditProduct(p => !p);
   const toggleShowDeleteProduct = () => setShowDeleteProduct(p => !p);
   
-  useEffect(() => {
+  const refreshProducts = () => {
     fetch('http://localhost:3001/api/getAll')
     .then(response => response.json())
     .then(result => setProducts(result))
     .catch(error => console.error('Error fetching data:', error))
+  }
+
+  useEffect(() => {
+   refreshProducts();
   }, []);
 
   const addProducts = (newProduct) =>{
     setProducts([...products, newProduct])
-  }
-
-  const refreshProducts = (products) => {
-    setProducts(products);
   }
 
   return (

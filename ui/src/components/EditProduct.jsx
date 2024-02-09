@@ -21,6 +21,7 @@ function EditProduct({refreshProducts, show, toggleShow, product}){
         };
         fetch('http://localhost:3001/api/update/'+id, requestOptions)
             .then(response => response.json())
+            .then(() => refreshProducts());
         clearTextFields();    
         toggleShow();
     }
